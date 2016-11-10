@@ -1,0 +1,2 @@
+class RealestateByZipcode::CLI
+end

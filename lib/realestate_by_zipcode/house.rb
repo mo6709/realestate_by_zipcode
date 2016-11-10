@@ -1,0 +1,2 @@
+class RealestateByZipcode::House
+end
