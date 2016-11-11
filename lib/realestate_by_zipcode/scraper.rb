@@ -1,2 +1,4 @@
 class RealestateByZipcode::Scraper
+  
+
 end
