@@ -22,9 +22,12 @@ class RealestateByZipcode::Scraper
 	end
 
 	def make_properties
-		scrape_index_page.each do |element|
-			House.new_from_index_page(element)
-		end	
+
+		scrape_index_page.each do |property|
+			RealestateByZipcode::Property.new_from_index_page(property)
+		end
+
 	end
+
 
 end
