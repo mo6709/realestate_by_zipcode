@@ -23,11 +23,19 @@ class RealestateByZipcode::Scraper
 
 	def make_properties
 
-		scrape_index_page.each do |property|
+		scrape_homeFinder_page.each do |property|
 			RealestateByZipcode::Property.new_from_index_page(property)
 		end
 
 	end
 
+	def self.call(zipcode, property_style)
+
+		scraper = self.new(zipcode, property_style)
+    scraper.get_homeFinder_page
+    scraper.scrape_homeFinder_page
+    scraper.make_properties
+
+	end
 
 end
