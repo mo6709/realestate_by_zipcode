@@ -10,7 +10,19 @@ class RealestateByZipcode::Property
 	  	@price = price
 	  	@url = url
 
+	    # add_property(self)
 
 	end
+
+  def new_from_index_page(property)
+
+		self.new(
+			property.css(), #=> it should return a location
+			property.css(), #=> it should return a price
+			property.css() #=> it should return a url
+			)
+		
+  end 
+
 
 end
