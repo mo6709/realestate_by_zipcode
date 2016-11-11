@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'pry'
 
 require_relative "realestate_by_zipcode/version"
-require_relative "realestate_by_zipcode/house"
+require_relative "realestate_by_zipcode/property"
 require_relative "realestate_by_zipcode/scraper"
 require_relative "realestate_by_zipcode/cli"
 
