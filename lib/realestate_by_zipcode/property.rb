@@ -24,7 +24,13 @@ class RealestateByZipcode::Property
 
   end
  
+  def self.delete_properties
 
+  	puts "Are you sure you want to clean the list?"
+  	input = gets.strip.downcase
+    @@properties.clear	if input == "yes"
+
+  end
 
   def self.properties
 
