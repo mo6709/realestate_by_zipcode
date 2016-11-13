@@ -1,17 +1,17 @@
 class RealestateByZipcode::Scraper
   #this class scrape www.homefinder.com
-  attr_accessor :zipcode, :property_style, :doc 
+  attr_accessor :zipcode, :property_type, :doc 
 
-  def initialize(zipcode, property_style)
+  def initialize(zipcode, property_type)
 
   	@zipcode = zipcode
-  	@property_style = property_style
+  	@property_type = property_type
   	
   end
 
 	def get_homeFinder_page
 
-		@doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/#{@zipcode}/#{@property_style}/")) 
+		@doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/#{@zipcode}/property-type-#{@property_type}/")) 
 
 	end
 
