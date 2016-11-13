@@ -1,6 +1,6 @@
 class RealestateByZipcode::Property
 	
-	attr_accessor :price, :lcation, :url, :description, :beds, :baths, :year_built, :property_size, :lot_size, :floors, :last_transaction, :last_transaction_purchase_price
+	attr_accessor :price, :location, :url, :description, :beds, :baths, :year_built, :property_size, :lot_size, :floors, :last_transaction, :last_transaction_purchase_price
   
   @@properties = []
 
@@ -16,7 +16,7 @@ class RealestateByZipcode::Property
   
   def self.new_from_index_page(property)
 
-		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text 
+		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text.strip 
 		price = property.css("div.price").text.strip                                              
 		url = property.css("div.alignForTwoPhotos a").attribute("href").value                      
 

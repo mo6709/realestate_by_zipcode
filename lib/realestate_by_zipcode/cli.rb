@@ -38,7 +38,11 @@ class RealestateByZipcode::CLI
     property_type = input_evaluation(input)
 
     RealestateByZipcode::Scraper.call(zipcode, property_type)
-    
+
+    display_properties 
+
+
+
 	end
 
 	def input_evaluation(index)
@@ -46,5 +50,18 @@ class RealestateByZipcode::CLI
      @@properties_types[index.to_i-1]
 
 	end
+
+	def display_properties
+
+	  RealestateByZipcode::Property.properties.each.with_index(1) do |p, i|
+	  	puts "#{i}. #{p.price}   - #{p.location}"
+	  end
+    puts "----------------------------------------------------------"
+
+	end
+ 
+
+
+
 
 end
