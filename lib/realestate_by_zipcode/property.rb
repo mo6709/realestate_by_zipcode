@@ -78,6 +78,11 @@ class RealestateByZipcode::Property
 
   end
 
-  
+  def lot_size
+
+  	@lot_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[8].css("dd").text.strip
+
+  end
+
 
 end
