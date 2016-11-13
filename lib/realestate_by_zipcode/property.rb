@@ -96,6 +96,10 @@ class RealestateByZipcode::Property
 
   end
 
+  def last_transaction_purchase_price
 
+    @last_transaction_purchase_price ||= seelf.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[3].css("dd").text.strip 
+
+  end
 
 end
