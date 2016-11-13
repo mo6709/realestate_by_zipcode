@@ -16,9 +16,9 @@ class RealestateByZipcode::Property
   
   def self.new_from_index_page(property)
 
-		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text #=> it should return the location
-		price = property.css("div.price").text.strip                                               #=> it should return a price
-		url = property.css("div.alignForTwoPhotos a").attribute("href").value                      #=> it should return a url
+		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text 
+		price = property.css("div.price").text.strip                                              
+		url = property.css("div.alignForTwoPhotos a").attribute("href").value                      
 
 		self.new(location, price, url)
 
@@ -26,7 +26,7 @@ class RealestateByZipcode::Property
  
   def self.delete_properties
 
-  	puts "Are you sure you want to clean the list?"
+  	puts "Are you sure you want to erase properties?"
   	input = gets.strip.downcase
     @@properties.clear	if input == "yes"
 
@@ -45,6 +45,12 @@ class RealestateByZipcode::Property
 	  else   
 	    @@properties << property
 	  end  
+
+  end
+
+  def doc
+
+  	@doc ||= Nkogiri::HTML(open(@url))
 
   end
 
