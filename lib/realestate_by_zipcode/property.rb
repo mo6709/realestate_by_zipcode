@@ -56,9 +56,14 @@ class RealestateByZipcode::Property
 
   def beds
 
-    @beds ||= self.doc.css("div.description.floatClear ul")[1].css("li")[1].text
+    @beds ||= self.doc.css("div.description.floatClear ul")[1].css("li")[1].text.match(/[0-9]/)[0]
 
   end
 
+  def baths
+
+  	@baths ||= self.doc.css("div.description.floatClear ul")[1].css("li")[2].text.match(/[0-9]/)[0]
+
+  end
 
 end
