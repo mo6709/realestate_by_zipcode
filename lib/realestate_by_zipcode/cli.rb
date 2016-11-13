@@ -1,21 +1,21 @@
 class RealestateByZipcode::CLI
   
-  #find out where would be the right place for this array to be
-	@properties_types = ["single-family-home", "multi-family-home", "duplex", "townhouse",
+  #find out where would be the right place for this array to be mayby create hash in Property class
+	@@properties_types = ["single-family-home", "multi-family-home", "duplex", "townhouse",
 		                   "coop-unit", "row-house", "condo-unit", "patio", "mobile-home",
 		                   "farm", "houseboat", "commercial", "building-lot", "raw-land"] 
 
 	def call
 
-		puts "Hello and welcom to RealestateByZipcode"
-		start
+		puts "Welcom to RealestateByZipcode"
+	  start
 
 	end
 
 	def start
 
 		puts "What Zip-Code would you like expolre?"
-		zipcode = gets.strop
+		zipcode = gets.strip
 
     puts "What type of property are you looking for?"
 	  puts "Single Family Home        enter - 1"
@@ -38,12 +38,12 @@ class RealestateByZipcode::CLI
     property_type = input_evaluation(input)
 
     RealestateByZipcode::Scraper.call(zipcode, property_type)
-
+    
 	end
 
 	def input_evaluation(index)
      
-     properties_types[index.to_s-1]
+     @@properties_types[index.to_i-1]
 
 	end
 
