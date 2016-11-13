@@ -1,6 +1,6 @@
 class RealestateByZipcode::Property
 	
-	attr_accessor :price, :lcation, :url, :beds, :baths, :year_built, :property_size, :floors, :last_transaction, :last_transaction_purchase_price
+	attr_accessor :price, :lcation, :url, :beds, :baths, :year_built, :property_size, :lot_size, :floors, :last_transaction, :last_transaction_purchase_price
   
   @@properties = []
 
@@ -68,7 +68,13 @@ class RealestateByZipcode::Property
 
   def year_built
 
-    @year_built ||= @doc.css("div.description.floatClear ul")[0].css("li")[1].text.match(/\d+/)[0]
+    @year_built ||= self.doc.css("div.description.floatClear ul")[0].css("li")[1].text.match(/\d+/)[0]
+
+  end
+
+  def home_size
+
+  	@home_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[7].css("dd").text.strip
 
   end
 
