@@ -16,7 +16,7 @@ class RealestateByZipcode::Property
   
   def self.new_from_index_page(property)
 
-		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text.strip 
+		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text 
 		price = property.css("div.price").text.strip                                              
 		url = property.css("div.alignForTwoPhotos a").attribute("href").value                      
 
