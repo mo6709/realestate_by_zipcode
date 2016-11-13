@@ -90,6 +90,12 @@ class RealestateByZipcode::Property
 
   end
 
+  def last_transaction
+
+  	@last_transaction ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[2].css("dd").text.strip
+
+  end
+
 
 
 end
