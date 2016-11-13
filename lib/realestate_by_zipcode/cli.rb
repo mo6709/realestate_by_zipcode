@@ -1,9 +1,9 @@
 class RealestateByZipcode::CLI
   
   #find out where would be the right place for this array to be
-	@properties_types = ["single-family-home", "Multi-Family Home", "duplex", "townhouse",
-		                   "coop-unit", "row-house", "condo-unit", "Patio Home", "Mobile/Manifactured Home",
-		                   "Farm", "Houseboat", "Commercial Building", "Building Lot", "Row Land"] 
+	@properties_types = ["single-family-home", "multi-family-home", "duplex", "townhouse",
+		                   "coop-unit", "row-house", "condo-unit", "patio", "mobile-home",
+		                   "farm", "houseboat", "commercial", "building-lot", "raw-land"] 
 
 	def call
 
@@ -31,7 +31,7 @@ class RealestateByZipcode::CLI
 	  puts "Houseboat                 enter - 11"
 	  puts "Commercial Building       enter - 12"
 	  puts "Building Lot              enter - 13"
-	  puts "Row Land                  enter - 14"
+	  puts "Raw Land                  enter - 14"
 
 	  input = gets.strip
     
