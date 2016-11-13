@@ -84,5 +84,12 @@ class RealestateByZipcode::Property
 
   end
 
+  def floors
+
+  	@floors ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[6].css("dd").text.strip
+
+  end
+
+
 
 end
