@@ -50,7 +50,13 @@ class RealestateByZipcode::Property
 
   def doc
 
-  	@doc ||= Nkogiri::HTML(open(@url))
+  	@doc ||= Nokogiri::HTML(open(@url))
+
+  end
+
+  def beds
+
+    @beds ||= self.doc.css("div.description.floatClear ul")[1].css("li")[1].text
 
   end
 
