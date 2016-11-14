@@ -11,66 +11,29 @@ class RealestateByZipcode::CLI
 	  start
 
 	end
-
+  
 	def start
 
     initialize_properties
-
-    display_properties 
-    puts "Would you like to take a close look on any of these proopperties?"
-    puts "if yes please the property index number"
+    display_properties
     
-    property_index = gets.strip
-    display_property(property_index)
-    
-    puts "Would you like to look into different property, if yes enter the index number"
-    property_index = gets.strip
-    if property_index.to_i > 0
-      display_property(property_index)
+    puts "Would you like to take a close look on a particular property?"
+    input = gets.strip
+    if input.downcase != "no"
+    	property_index = ""
+	    while property_index != "exit" 
+	     puts "----------Property's Details------------"
+	     puts "Please enter the property's index number"
+	     property_index = gets.strip
+	     display_property(property_index)
+      end
     end  
     
 	end
 
-	def input_evaluation(index)
-     
-     @@properties_types[index.to_i-1]
-
-	end
-
-	def display_properties
-
-	  RealestateByZipcode::Property.properties.each.with_index(1) do |p, i|
-	  	puts "#{i}. #{p.price}   - #{p.location}"
-	  end
-    puts "------------------------------------------------------------"
-
-	end
-
-	def display_property(index)
-
-		p = RealestateByZipcode::Property.properties[index.to_i-1]
-    puts "----------------------#{p.location}----------------------"
-    puts "Price:         #{p.price}"
-    puts "Beds:          #{p.beds}"
-    puts "Baths:         #{p.baths}"
-    puts "Year built:    #{p.year_built}"
-    puts "Property size: #{p.property_size}"
-    puts "Lot size:      #{p.lot_size}"
-    puts "Floors:        #{p.floors}"
-    puts "Last transaction:                #{p.last_transaction}"
-    puts "Last transaction purchase price: #{p.last_transaction_purchase_price}"
-    
-    puts "Would you like to see a brief description?"
-    input = gets.strip
-    if input.downcase == "yes" 
-      puts "#{p.description}"
-    end
-
-	end
-
 	def initialize_properties
-
-	  puts "What Zip-Code would you like expolre?"
+    
+	  puts "What Zip-Code would you like explore?"
 		zipcode = gets.strip
 
     puts "What type of property are you looking for?"
@@ -95,9 +58,45 @@ class RealestateByZipcode::CLI
     RealestateByZipcode::Scraper.call(zipcode, property_type)
 
 	end
- 
 
+	def display_properties
 
+	  RealestateByZipcode::Property.properties.each.with_index(1) do |p, i|
+	  	puts "#{i}. #{p.price}   - #{p.location}"
+	  end
+    puts "------------------------------------------------------------"
 
+	end
+
+	def display_property(index)
+
+    if index.to_i > 0
+			p = RealestateByZipcode::Property.properties[index.to_i-1]
+	    puts "----------------------#{p.location}----------------------"
+	    puts "Price:         #{p.price}"
+	    puts "Beds:          #{p.beds}"
+	    puts "Baths:         #{p.baths}"
+	    puts "Year built:    #{p.year_built}"
+	    puts "Property size: #{p.property_size}"
+	    puts "Lot size:      #{p.lot_size}"
+	    puts "Floors:        #{p.floors}"
+	    puts "Last transaction:                #{p.last_transaction}"
+	    puts "Last transaction purchase price: #{p.last_transaction_purchase_price}"
+	    puts ""
+	    puts "Would you like to see a brief description?"
+	    input = gets.strip
+	    if input.downcase == "yes" 
+	      puts "#{p.description}"
+	      puts ""
+	    end   
+	  end
+
+	end
+
+	def input_evaluation(index)
+	     
+	  @@properties_types[index.to_i-1]
+
+	end
 
 end
