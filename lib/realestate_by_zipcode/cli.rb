@@ -6,15 +6,12 @@ class RealestateByZipcode::CLI
 		                   "farm", "houseboat", "commercial", "building-lot", "raw-land"] 
 
 	def call
-
 		puts "Welcom to RealestateByZipcode"
 	  start
     goodbey
-    
 	end
   
 	def start
-
     initialize_properties
     display_properties
     
@@ -24,16 +21,14 @@ class RealestateByZipcode::CLI
     	property_index = ""
 	    while property_index != "exit" 
 	     puts "----------Property's Details------------"
-	     puts "Please enter the property's index number"
+	     puts "Please enter an index number"
 	     property_index = gets.strip
 	     display_property(property_index)
       end
-    end  
-    
+    end    
 	end
 
-	def initialize_properties
-    
+	def initialize_properties  
     RealestateByZipcode::Property.delete_properties
 
 	  puts "What Zip-Code would you like explore?"
@@ -63,16 +58,13 @@ class RealestateByZipcode::CLI
 	end
 
 	def display_properties
-
 	  RealestateByZipcode::Property.properties.each.with_index(1) do |p, i|
 	  	puts "#{i}. #{p.price}   - #{p.location}"
 	  end
     puts "------------------------------------------------------------"
-
 	end
 
 	def display_property(index)
-
     if index.to_i > 0
 			p = RealestateByZipcode::Property.properties[index.to_i-1]
 	    puts "----------------------#{p.location}----------------------"
@@ -93,16 +85,14 @@ class RealestateByZipcode::CLI
 	      puts ""
 	    end   
 	  end
-
 	end
 
-	def input_evaluation(index)
-	     
+	def input_evaluation(index)	     
 	  @@properties_types[index.to_i-1]
-
 	end
   
   def goodbey
   	puts "---- GOODBEY! ----"
   end
+
 end
