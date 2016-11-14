@@ -8,7 +8,7 @@ class RealestateByZipcode::Scraper
   end
 
 	def get_homeFinder_page
-		@doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/#{@zipcode}/property-type-#{@property_type}/")) 
+	  @doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/#{@zipcode}/property-type-#{@property_type}/"))	     
 	end
 
 	def scrape_homeFinder_page 
@@ -23,9 +23,13 @@ class RealestateByZipcode::Scraper
 
 	def self.call(zipcode, property_style)
 		scraper = self.new(zipcode, property_style)
-    scraper.get_homeFinder_page
-    scraper.scrape_homeFinder_page
-    scraper.make_properties
+		begin
+      scraper.get_homeFinder_page
+  	  scraper.scrape_homeFinder_page
+      scraper.make_properties
+    rescue OpenURI::HTTPError => error
+    	error.message
+    end   
 	end
 
 end

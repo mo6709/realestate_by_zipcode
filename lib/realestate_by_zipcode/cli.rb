@@ -53,8 +53,12 @@ class RealestateByZipcode::CLI
 	  input = gets.strip
 
     property_type = input_evaluation(input)
-    RealestateByZipcode::Scraper.call(zipcode, property_type)
-
+    if RealestateByZipcode::Scraper.call(zipcode, property_type) == "404 Not Found"
+    	puts "We're sorry. No properties match your search :("
+    	puts ""
+    	initialize_properties
+    end	
+    
 	end
 
 	def display_properties
