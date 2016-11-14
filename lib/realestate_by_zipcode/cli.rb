@@ -33,6 +33,8 @@ class RealestateByZipcode::CLI
 
 	def initialize_properties
     
+    RealestateByZipcode::Property.delete_properties
+    
 	  puts "What Zip-Code would you like explore?"
 		zipcode = gets.strip
 
