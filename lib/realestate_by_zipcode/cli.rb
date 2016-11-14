@@ -34,31 +34,33 @@ class RealestateByZipcode::CLI
 	  puts "What Zip-Code would you like explore?"
 		zipcode = gets.strip
 
-    puts "What type of property are you looking for?"
-    puts "------------------------------------------"
-	  puts "Single Family Home        enter - 1"
-	  puts "Multi-Family Home         enter - 2"
-	  puts "Duplex                    enter - 3"
-	  puts "Townhouse/Townhome         enter - 4"
-	  puts "Co-op unit                enter - 5"
-	  puts "Row House                 enter - 6"
-	  puts "Condominium/Apartment     enter - 7"
-	  puts "Patio Home                enter - 8"
-	  puts "Mobile/Manufactured Home  enter - 9"
-	  puts "Farm                      enter - 10"
-	  puts "Houseboat                 enter - 11"
-	  puts "Commercial Building       enter - 12"
-	  puts "Building Lot              enter - 13"
-	  puts "Raw Land                  enter - 14"
-	  input = gets.strip
+    if zipcode != "exit"
+	    puts "What type of property are you looking for?"
+	    puts "------------------------------------------"
+		  puts "Single Family Home        enter - 1"
+		  puts "Multi-Family Home         enter - 2"
+		  puts "Duplex                    enter - 3"
+		  puts "Townhouse/Townhome         enter - 4"
+		  puts "Co-op unit                enter - 5"
+		  puts "Row House                 enter - 6"
+		  puts "Condominium/Apartment     enter - 7"
+		  puts "Patio Home                enter - 8"
+		  puts "Mobile/Manufactured Home  enter - 9"
+		  puts "Farm                      enter - 10"
+		  puts "Houseboat                 enter - 11"
+		  puts "Commercial Building       enter - 12"
+		  puts "Building Lot              enter - 13"
+		  puts "Raw Land                  enter - 14"
+		  input = gets.strip
 
-    property_type = input_evaluation(input)
-    if RealestateByZipcode::Scraper.call(zipcode, property_type) == "404 Not Found"
-    	puts "We're sorry. No properties match your search :("
-    	puts ""
-    	initialize_properties
-    end	
-    
+	    property_type = input_evaluation(input)
+	    if RealestateByZipcode::Scraper.call(zipcode, property_type) == "404 Not Found"
+	    	puts "We're sorry. No properties match your search :("
+	    	puts ""
+	    	initialize_properties
+	    end
+	  end
+	    	   
 	end
 
 	def display_properties
