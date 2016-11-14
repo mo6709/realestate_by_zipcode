@@ -26,9 +26,7 @@ class RealestateByZipcode::Property
  
   def self.delete_properties
 
-  	puts "Are you sure you want to erase properties?"
-  	input = gets.strip.downcase
-    @@properties.clear	if input == "yes"
+    @@properties.clear
 
   end
 
