@@ -28,7 +28,7 @@ Or install it yourself as:
 Type the below and follow the screen prompts.
 
 ```ruby
-'realestate_by_zipcode'
+ $ realestate_by_zipcode
 ```
 
 ## Development
