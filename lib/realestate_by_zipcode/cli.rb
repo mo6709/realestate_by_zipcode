@@ -15,17 +15,17 @@ class RealestateByZipcode::CLI
     initialize_properties
     display_properties
     
-    puts "Would you like to take a close look on a particular property?"
-    input = gets.strip
-    if input.downcase != "no"
-    	property_index = ""
-	    while property_index != "exit" 
-	     puts "----------Property's Details------------"
-	     puts "Please enter an index number"
-	     property_index = gets.strip
-	     display_property(property_index)
-      end
-    end    
+    property_index = "" 
+    while property_index != "exit" 
+      puts "-------------------Property's Details-------------------"
+      puts "Please enter the property number for more details or 'exit' "
+      property_index = gets.strip
+      display_property(property_index)
+    end
+
+    puts "Would you like to explore a different zipcode?"
+    start_over = gets.strip
+    start if start_over.downcase == "yes"  
 	end
 
 	def initialize_properties  
@@ -61,7 +61,7 @@ class RealestateByZipcode::CLI
 	  RealestateByZipcode::Property.properties.each.with_index(1) do |p, i|
 	  	puts "#{i}. #{p.price}   - #{p.location}"
 	  end
-    puts "------------------------------------------------------------"
+    puts ""
 	end
 
 	def display_property(index)
