@@ -9,7 +9,8 @@ class RealestateByZipcode::CLI
 
 		puts "Welcom to RealestateByZipcode"
 	  start
-
+    goodbey
+    
 	end
   
 	def start
@@ -34,7 +35,7 @@ class RealestateByZipcode::CLI
 	def initialize_properties
     
     RealestateByZipcode::Property.delete_properties
-    
+
 	  puts "What Zip-Code would you like explore?"
 		zipcode = gets.strip
 
@@ -100,5 +101,8 @@ class RealestateByZipcode::CLI
 	  @@properties_types[index.to_i-1]
 
 	end
-
+  
+  def goodbey
+  	puts "---- GOODBEY! ----"
+  end
 end
