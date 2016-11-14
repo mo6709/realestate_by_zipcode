@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "realestate_by_zipcode"
+
+RealestateByZipcode::CLI.new.call

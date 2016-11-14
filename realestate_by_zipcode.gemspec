@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Moshe"]
   spec.email         = ["mo6709@gmail.com"]
 
-  spec.summary       = %q{CLI gem that find and display a list of Real-Estate properties by zip code}
+  spec.summary       = %q{CLI Gem that find and display a list of properties by zip code}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/mo6709/realestate_by_zipcode"
   spec.license       = "MIT"

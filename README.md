@@ -1,8 +1,11 @@
-# RealestateByZipcode
+# Realestate by Zipcode
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/realestate_by_zipcode`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to Realestate by Zipcode!
 
-TODO: Delete this and the text above, and describe your gem
+Be able to print a list of available properties based on a zip-code, the Gem is able to find 14 different types of 
+properties for each zip-code. A comfortable CLI which display clear instructions for every step and let you know more about a particular property
+by display crucial information as, last purchase, year was built, property size and more.
+
 
 ## Installation
 
@@ -22,7 +25,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the screen prompts.
+
+```ruby
+'realestate_by_zipcode'
+```
 
 ## Development
 
