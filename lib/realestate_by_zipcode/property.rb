@@ -42,39 +42,75 @@ class RealestateByZipcode::Property
   
 
   def description
-  	@description ||= self.doc.css("div.description.floatClear p").text
+  	begin 
+  	  @description ||= self.doc.css("div.description.floatClear p").text
+  	rescue NoMethodError
+  		"N/A"
+  	end  
   end
 
   def beds
-    @beds ||= self.doc.css("div.description.floatClear ul")[1].css("li")[1].text.match(/\d+/)[0]
+  	begin
+      @beds ||= self.doc.css("div.description.floatClear ul")[1].css("li")[1].text.match(/\d+/)[0]
+    rescue NoMethodError
+    	"N/A"
+    end  
   end
 
   def baths
-  	@baths ||= self.doc.css("div.description.floatClear ul")[1].css("li")[2].text.match(/\d+/)[0]
+  	begin
+  	  @baths ||= self.doc.css("div.description.floatClear ul")[1].css("li")[2].text.match(/\d+/)[0]
+  	rescue NoMethodError
+  		"N/A"
+  	end  
   end
 
   def year_built
-    @year_built ||= self.doc.css("div.description.floatClear ul")[0].css("li")[1].text.match(/\d+/)[0]
+  	begin
+      @year_built ||= self.doc.css("div.description.floatClear ul")[0].css("li")[1].text.match(/\d+/)[0]
+    rescue NoMethodError 
+    	"N/A"
+    end  
   end
 
-  def home_size
-  	@home_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[7].css("dd").text.strip
+  def property_size
+  	begin
+  	  @property_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[7].css("dd").text
+  	rescue NoMethodError 
+  		"N/A"
+  	end  
   end
 
   def lot_size
-  	@lot_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[8].css("dd").text.strip
+  	begin
+  	  @lot_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[8].css("dd").text.strip
+  	rescue NoMethodError
+  		"N/A"
+  	end  
   end
 
   def floors
-  	@floors ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[6].css("dd").text.strip
+  	begin
+  	  @floors ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[6].css("dd").text.strip
+    rescue NoMethodError
+    	"N/A"
+    end
   end
 
   def last_transaction
-  	@last_transaction ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[2].css("dd").text.strip
+  	begin
+  	  @last_transaction ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[2].css("dd").text.strip
+    rescue NoMethodError
+    	"N/A"
+    end	
   end
 
   def last_transaction_purchase_price
-    @last_transaction_purchase_price ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[3].css("dd").text.strip 
+  	begin
+      @last_transaction_purchase_price ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[3].css("dd").text.strip
+    rescue NoMethodError
+    	"N/A"
+    end    
   end
 
 end

@@ -60,7 +60,7 @@ class RealestateByZipcode::CLI
 	    	initialize_properties
 	    end
 	  end
-	    	   
+
 	end
 
 	def display_properties
@@ -71,7 +71,8 @@ class RealestateByZipcode::CLI
 	end
 
 	def display_property(index)
-    if index.to_i > 0
+
+    if index.to_i > 0  && index.to_i <= RealestateByZipcode::Property.properties.size
 			p = RealestateByZipcode::Property.properties[index.to_i-1]
 	    puts "----------------------#{p.location}----------------------"
 	    puts "Price:         #{p.price}"
@@ -89,7 +90,9 @@ class RealestateByZipcode::CLI
 	    if input.downcase == "yes" 
 	      puts "#{p.description}"
 	      puts ""
-	    end   
+	    end 
+	  else
+	    puts "Please enter a valid number"  
 	  end
 	end
 
