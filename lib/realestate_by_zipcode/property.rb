@@ -1,6 +1,6 @@
 class RealestateByZipcode::Property
 	
-	attr_accessor :price, :location, :url, :description, :beds, :baths, :year_built, :property_size, :lot_size, :floors, :last_transaction, :last_transaction_purchase_price
+	attr_accessor :price, :location, :url, :description, :beds, :baths, :year_built, :property_size, :lot_size, :contact_info, :last_transaction, :last_transaction_purchase_price
   
   @@properties = []
 
@@ -73,25 +73,9 @@ class RealestateByZipcode::Property
     end  
   end
 
-  def property_size
+  def contact_info
   	begin
-  	  @property_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[7].css("dd").text
-  	rescue NoMethodError 
-  		"N/A"
-  	end  
-  end
-
-  def lot_size
-  	begin
-  	  @lot_size ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[8].css("dd").text.strip
-  	rescue NoMethodError
-  		"N/A"
-  	end  
-  end
-
-  def floors
-  	begin
-  	  @floors ||= self.doc.css("div[data-tab-name='publicFacts'] div.attributes dl")[6].css("dd").text.strip
+  	  @contact_info ||= self.doc.css("div.requiredContactInformation div.contactDetails div[itemprop='telephone']").text
     rescue NoMethodError
     	"N/A"
     end
