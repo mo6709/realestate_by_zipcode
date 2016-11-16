@@ -1,8 +1,23 @@
 class RealestateByZipcode::Property
 	
-	attr_accessor :price, :location, :url, :description, :beds, :baths, :year_built, :property_size, :lot_size, :contact_info, :last_transaction, :last_transaction_purchase_price
+	attr_accessor :price, 
+	              :location,  
+	              :url, 
+	              :description, 
+	              :beds, :baths,  
+	              :year_built, 
+	              :property_size, 
+	              :lot_size, 
+	              :contact_info, 
+	              :last_transaction, 
+	              :last_transaction_purchase_price
   
   @@properties = []
+
+  #find out where would be the right place for this array to be mayby create hash in Property class
+	@@properties_types = ["single-family-home", "multi-family-home", "duplex", "townhouse",
+		                   "coop-unit", "row-house", "condo-unit", "patio", "mobile-home",
+		                   "farm", "houseboat", "commercial", "building-lot", "raw-land"] 
 
 	def initialize(location=nil, price=nil, url=nil)
   	@location = location
@@ -96,5 +111,9 @@ class RealestateByZipcode::Property
     	"N/A"
     end    
   end
+
+  def self.input_evaluation(index)	     
+	  @@properties_types[index.to_i-1]
+	end
 
 end

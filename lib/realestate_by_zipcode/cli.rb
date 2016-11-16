@@ -1,9 +1,5 @@
 class RealestateByZipcode::CLI
   
-  #find out where would be the right place for this array to be mayby create hash in Property class
-	@@properties_types = ["single-family-home", "multi-family-home", "duplex", "townhouse",
-		                   "coop-unit", "row-house", "condo-unit", "patio", "mobile-home",
-		                   "farm", "houseboat", "commercial", "building-lot", "raw-land"] 
 
 	def call
 		puts "*****************************"
@@ -60,7 +56,7 @@ class RealestateByZipcode::CLI
 		  puts "------------------------------------------"
 		  input = gets.strip
 
-	    property_type = input_evaluation(input)
+	    property_type = RealestateByZipcode::Property.input_evaluation(input)
 	    if RealestateByZipcode::Scraper.call(zipcode, property_type) == "404 Not Found"
 	    	puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	    	puts " Sorry. No properties match your search :( "
@@ -107,10 +103,6 @@ class RealestateByZipcode::CLI
 	    puts "Please enter a valid number"
 	    puts "---------------------------"  
 	  end
-	end
-
-	def input_evaluation(index)	     
-	  @@properties_types[index.to_i-1]
 	end
   
   def goodbey
