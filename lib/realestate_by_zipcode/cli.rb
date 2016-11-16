@@ -84,8 +84,6 @@ class RealestateByZipcode::CLI
 	    puts "Beds:                            #{p.beds}"
 	    puts "Baths:                           #{p.baths}"
 	    puts "Year built:                      #{p.year_built}"
-	    puts "Property size:                   #{p.property_size}"
-	    puts "Lot size:                        #{p.lot_size}"
 	    puts "Contact Information:         #{p.contact_info}"
 	    puts "Last transaction:                #{p.last_transaction}"
 	    puts "Last transaction purchase price: #{p.last_transaction_purchase_price}"
