@@ -13,14 +13,31 @@ class RealestateByZipcode::CLI
     initialize_properties
     display_properties
     
-    property_index = "" 
-    while property_index != "exit" 
-      puts "---------------------Property's Details---------------------"
-      puts "Please enter the property number for more details or 'exit' "
-      puts "------------------------------------------------------------"
-      property_index = gets.strip
-      display_property(property_index)
+    input = "" 
+    while input != "exit" 
+      puts "---------------------------------------------------------------------"
+      puts "|                What would you like to do next?                    |"
+      puts "---------------------------------------------------------------------"
+      puts "| to exit                                          enter - 'exit'   |"
+      puts "| to display the list of properties                enter - 'menu'   |"
+      puts "| te get more details about a particular property  enter - 'details'|"
+      puts "---------------------------------------------------------------------"
+      input = gets.strip
+      if input.downcase == "exit"
+        break
+      elsif input.downcase == "menu"
+      	display_properties
+      elsif input.downcase == "details"
+      	puts "---------------------------------"
+      	puts "Please enter the property number"
+      	puts "---------------------------------"
+      	property_index = gets.strip
+        display_property(property_index)
+      else
+        puts "enter a valid selection"  
+      end	   
     end
+
     puts "----------------------------------------------"
     puts "Would you like to explore a different zipcode?"
     puts "----------------------------------------------"
