@@ -4,10 +4,9 @@ class RealestateByZipcode::Property
 	              :location,  
 	              :url, 
 	              :description, 
-	              :beds, :baths,  
+	              :beds, 
+	              :baths,  
 	              :year_built, 
-	              :property_size, 
-	              :lot_size, 
 	              :contact_info, 
 	              :last_transaction, 
 	              :last_transaction_purchase_price

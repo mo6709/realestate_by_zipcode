@@ -18,9 +18,9 @@ class RealestateByZipcode::CLI
       puts "---------------------------------------------------------------------"
       puts "|                What would you like to do next?                    |"
       puts "---------------------------------------------------------------------"
-      puts "| to exit                                          enter - 'exit'   |"
-      puts "| to display the list of properties                enter - 'menu'   |"
-      puts "| te get more details about a particular property  enter - 'details'|"
+      puts "| exit                                          enter - 'exit'   |"
+      puts "| display the list of properties                enter - 'menu'   |"
+      puts "| get more details about a particular property  enter - 'details'|"
       puts "---------------------------------------------------------------------"
       input = gets.strip
       if input.downcase == "exit"
