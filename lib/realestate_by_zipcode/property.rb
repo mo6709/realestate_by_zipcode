@@ -25,15 +25,7 @@ class RealestateByZipcode::Property
     
     self.class.add_property(self)
 	end
-  
-  def self.new_from_index_page(property)
-		location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text 
-		price = property.css("div.price").text.strip                                              
-		url = property.css("div.alignForTwoPhotos a").attribute("href").value                      
 
-		self.new(location, price, url)
-  end
- 
   def self.delete_properties
     @@properties.clear
   end
@@ -53,7 +45,6 @@ class RealestateByZipcode::Property
   def doc
   	@doc ||= Nokogiri::HTML(open(@url))
   end
-  
 
   def description
   	begin 

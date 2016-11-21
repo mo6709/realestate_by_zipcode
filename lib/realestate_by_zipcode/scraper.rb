@@ -15,9 +15,13 @@ class RealestateByZipcode::Scraper
 		@doc.css("div#leftColumn div.resultsBands.last")
 	end
 
-	def make_properties
+	def scrape_and_create_properties
 		scrape_homeFinder_page.each do |property|
-			RealestateByZipcode::Property.new_from_index_page(property)
+		  location = property.css("span[itemprop='name']").text + property.css("div.cityStZip").text 
+		  price = property.css("div.price").text.strip                                              
+		  url = property.css("div.alignForTwoPhotos a").attribute("href").value 
+
+			RealestateByZipcode::Property.new(location, price, url)
 		end
 	end
 
@@ -26,7 +30,7 @@ class RealestateByZipcode::Scraper
 		begin
       scraper.get_homeFinder_page
   	  scraper.scrape_homeFinder_page
-      scraper.make_properties
+      scraper.scrape_and_create_properties
     rescue OpenURI::HTTPError => error
     	error.message
     end   

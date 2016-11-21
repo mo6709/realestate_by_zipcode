@@ -2,13 +2,17 @@ class RealestateByZipcode::CLI
   
 
 	def call
-		puts "*****************************"
-		puts "Welcom to RealestateByZipcode"
-		puts "*****************************"
+    welcome
 	  start
     goodbey
 	end
   
+  def welcome
+    puts "*****************************"
+	  puts "Welcom to RealestateByZipcode"
+	  puts "*****************************"
+  end
+
 	def start
     initialize_properties
     display_properties
